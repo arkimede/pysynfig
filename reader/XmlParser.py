@@ -183,7 +183,7 @@ class XmlParser:
             self.parseTransformation(param, parentLayer)
         elif paramName == "canvas":
             self.parseCanvas(param, parentLayer)
-        elif paramName == "time_dilatation":
+        elif paramName == "time_dilation":
             self.parseTimeDilation(param, parentLayer)
         elif paramName == "time_offset":
             self.parseTimeOffset(param, parentLayer)
@@ -533,7 +533,7 @@ class XmlParser:
                 break
 
     def parseTimeDilation(self, param, parentLayer):
-        tmpParam = Param()
+	tmpParam = Param()
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
@@ -757,6 +757,7 @@ class XmlParser:
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
+	tmpParam.setNode(param)
         #seleziono il tag string
         string = param.find('string')
         #prendo il contenuto di string

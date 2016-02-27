@@ -35,6 +35,8 @@ class Param:
 
     def setText(self,text):
         self.text = text
+	if self.node is not None:
+		self.node.find("string").text = text
 
     def setAnimated(self, animated):
        self.animated = animated

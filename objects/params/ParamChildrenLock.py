@@ -12,3 +12,5 @@ class ParamChildrenLock(Param):
 
     def setStatic(self,static):
         self.static = static
+	if self.node is not None:
+		self.node.set('static',static)
