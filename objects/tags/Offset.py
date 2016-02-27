@@ -14,6 +14,12 @@ class Offset:
     def setVector(self, vector):
         self.vector = vector
 
+    def setVectorX(self,x):
+	self.vector.setX(x)
+
+    def setVectorY(self,y):
+	self.vector.setY(y)
+
     def getVector(self):
         return self.vector
 

@@ -319,7 +319,7 @@ class XmlParser:
 
     def parseOrigin(self, param, parentLayer):
         tmpParam = ParamOrigin()
-        name = param.get('name')
+	name = param.get('name')
         self.printInfo('name',name)
         tmpParam.setName(name)
 
@@ -338,10 +338,11 @@ class XmlParser:
         #seleziono il tag vector
         else:
             vector = param.find('vector')
+	    
             if vector is not None:
                 x = vector.find('x').text
                 y = vector.find('y').text
-                tmpParam.setVector(x,y)
+                tmpParam.setVector(x,y,vector)
                 self.printInfo('x',x)
                 self.printInfo('y',y)
 
@@ -730,7 +731,7 @@ class XmlParser:
     def parseVector(self,vector):      
         x = vector.find('x').text
         y = vector.find('y').text
-        tmpVector = Vector(x,y)
+        tmpVector = Vector(x,y,vector)
         return tmpVector
 
     def parseOutlineGrow(self, param, parentLayer):

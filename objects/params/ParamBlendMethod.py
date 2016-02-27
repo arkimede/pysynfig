@@ -9,6 +9,8 @@ class ParamBlendMethod(Param):
 
     def setStatic(self, static):
         self.static = static
+	if self.node is not None:
+		self.node.set('static', self.static)
 
     def getStatic(self):
         return self.static
