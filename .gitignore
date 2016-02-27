@@ -1,0 +1,4 @@
+*.pyc
+./objects/params/*.pyc
+./objects/tags/*.pyc
+./reader/*.pyc
