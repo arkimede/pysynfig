@@ -8,7 +8,10 @@ class Param:
         self.text = None
         self.animated = None
         self.bool = False
+	self.node = None
 
+    def setNode(self, node):
+	self.node = node
     def setName(self,name):
         self.name = name
 
@@ -17,6 +20,8 @@ class Param:
 
     def setValue(self,value):
         self.value = value
+	if self.node is not None:
+		self.node.set('value', self.value)
 
     def getValue(self):
         return self.value

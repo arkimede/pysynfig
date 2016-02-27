@@ -249,6 +249,7 @@ class XmlParser:
             #prendo il l'attributo value del tag real
             if real is not None:
                 value = real.get('value')
+		tmpParam.setNode(real)
                 tmpParam.setValue(value)
                 self.printInfo('value', value)
         #aggiungo il param all hash dei param del layer
@@ -285,6 +286,7 @@ class XmlParser:
             #prendo l'attributo value del tag real
             if real is not None:
                 value = real.get('value')
+		tmpParam.setNode(real)
                 tmpParam.setValue(value)
                 self.printInfo('value',value)
         #aggiungo il param all hash dei param del layer
@@ -303,6 +305,7 @@ class XmlParser:
         #prendo l'attributo value del tag integer
         if integer is not None:
             value = integer.get('value')
+	    tmpParam.setNode(integer)
             tmpParam.setValue(value)
             self.printInfo('value',value)
 
@@ -417,6 +420,7 @@ class XmlParser:
         #prendo l'attributo value del tag real
         if real is not None:
             value = real.get('value')
+            tmpParam.setNode(real)
             tmpParam.setValue(value)
             self.printInfo('value',value)
         #aggiungo il param all hash dei param del layer
@@ -497,6 +501,7 @@ class XmlParser:
         #prendo il l'attributo value del tag real
         if time is not None:
             value = time.get('value')
+	    tmpParam.setNode(time)
             tmpParam.setValue(value)
             self.printInfo('value', value)
         #aggiungo il param all hash dei param del layer
@@ -535,6 +540,7 @@ class XmlParser:
         #prendo il l'attributo value del tag real
         if real is not None:
             value = real.get('value')
+            tmpParam.setNode(real)
             tmpParam.setValue(value)
             self.printInfo('value', value)
         #aggiungo il param all hash dei param del layer
@@ -552,6 +558,7 @@ class XmlParser:
             value = bool.get('value')
             static = bool.get('static')
             if value is not None:
+                tmpParam.setNode(bool)
                 tmpParam.setValue(value)
                 self.printInfo('value', value)
             if static is not None:
@@ -598,14 +605,16 @@ class XmlParser:
                 <angle value="-31.675468"/>
             </angle>
             """
-            angleValue = angle.find('angle').get('value')
+	    angle_ = angle.find('angle')
+            angleValue = angle_.get('value')
             tmpAngle.setValue(angleValue)
         return tmpAngle
 
     def parseSkewAngle(self, skew_angle,parentLayer):
         #tag skew_angle
         tmpSkewAngle = SkewAngle()
-        skewAngleValue = skew_angle.find('angle').get('value')
+        angle_ =  skew_angle.find('angle')
+	skewAngleValue = angle_.get('value')
         tmpSkewAngle.setValue(skewAngleValue)
         return tmpSkewAngle
 
@@ -626,6 +635,7 @@ class XmlParser:
         #prendo il l'attributo value del tag real
         if time is not None:
             value = time.get('value')
+            tmpParam.setNode(time)
             tmpParam.setValue(value)
             self.printInfo('value', value)
         #aggiungo il param all hash dei param del layer
@@ -648,6 +658,7 @@ class XmlParser:
         #prendo il l'attributo value del tag real
         if real is not None:
             value = real.get('value')
+            tmpParam.setNode(real)
             tmpParam.setValue(value)
             self.printInfo('value', value)
         #aggiungo il param all hash dei param del layer
@@ -731,6 +742,7 @@ class XmlParser:
         #prendo il l'attributo value del tag real
         if real is not None:
             value = real.get('value')
+            tmpParam.setNode(real)
             tmpParam.setValue(value)
             self.printInfo('value', value)
         #aggiungo il param all hash dei param del layer
@@ -794,6 +806,7 @@ class XmlParser:
         if bool is not None:
             value = bool.get('value')
             static = bool.get('static')
+            tmpParam.setNode(bool)
             tmpParam.setValue(value)
             tmpParam.setStatic(static)
             self.printInfo('value', value)
@@ -811,6 +824,7 @@ class XmlParser:
         #prendo il l'attributo value del tag real
         if real is not None:
             value = real.get('value')
+            tmpParam.setNode(real)
             tmpParam.setValue(value)
             self.printInfo('value', value)
         #aggiungo il param all hash dei param del layer
