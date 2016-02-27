@@ -1,29 +1,29 @@
 from xml.etree import ElementTree
-from pysynfig.objects.tags import Layer as layerObj
-from pysynfig.objects.params import Param as paramObj
-from pysynfig.objects.params import ParamBlendMethod as paramBlendMethodObj
-from pysynfig.objects.params import ParamOrigin as paramOriginObj
-from pysynfig.objects.params import ParamColor as paramColorObj
-from pysynfig.objects.params import ParamPoint as paramPointObj
-from pysynfig.objects.tags import Color as colorObj
-from pysynfig.objects.params import ParamTransformation as paramTransformationObj
-from pysynfig.objects.tags import Offset as offsetObj
-from pysynfig.objects.tags import Animated as animatedObj
-from pysynfig.objects.tags import Waypoint as waypointObj
-from pysynfig.objects.tags import Vector as vectorObj
-from pysynfig.objects.tags import Point as pointObj
-from pysynfig.objects.tags import Angle as angleObj
-from pysynfig.objects.tags import SkewAngle as skewangleObj
-from pysynfig.objects.tags import Composite as compositeObj
-from pysynfig.objects.params import ParamChildrenLock as childrenLockObj
-from pysynfig.objects.params import ParamCanvas as paramCanvasObj
-from pysynfig.objects.params import ParamTl as paramTlObj
-from pysynfig.objects.params import ParamBr as paramBrObj
-from pysynfig.objects.params import ParamC as paramCObj
-from pysynfig.objects.tags import Scale as scaleObj
-from pysynfig.objects.tags import MainCanvas as mainCanvasObj
-from pysynfig.objects.tags import Meta as metaObj
-from pysynfig.objects.tags import Keyframe as keyframeObj
+from pysynfig.objects.tags import Layer 
+from pysynfig.objects.params import Param 
+from pysynfig.objects.params import ParamBlendMethod
+from pysynfig.objects.params import ParamOrigin
+from pysynfig.objects.params import ParamColor
+from pysynfig.objects.params import ParamPoint
+from pysynfig.objects.tags import Color
+from pysynfig.objects.params import ParamTransformation
+from pysynfig.objects.tags import Offset
+from pysynfig.objects.tags import Animated
+from pysynfig.objects.tags import Waypoint
+from pysynfig.objects.tags import Vector
+from pysynfig.objects.tags import Point
+from pysynfig.objects.tags import Angle
+from pysynfig.objects.tags import SkewAngle
+from pysynfig.objects.tags import Composite
+from pysynfig.objects.params import ParamChildrenLock
+from pysynfig.objects.params import ParamCanvas
+from pysynfig.objects.params import ParamTl
+from pysynfig.objects.params import ParamBr
+from pysynfig.objects.params import ParamC
+from pysynfig.objects.tags import Scale
+from pysynfig.objects.tags import MainCanvas
+from pysynfig.objects.tags import Meta
+from pysynfig.objects.tags import Keyframe
 #import pdb
 
 class XmlParser:
@@ -55,7 +55,7 @@ class XmlParser:
                     root = tag
                     break
                 
-            tmpCanvas = mainCanvasObj.MainCanvas()
+            tmpCanvas = MainCanvas()
             #parsing degli attributi del tag canvas
             idAttrib = root.attrib.get('id')
             if idAttrib is not None:
@@ -111,7 +111,7 @@ class XmlParser:
             #parsing tags meta
             tmpListMeta = []
             for meta in root.findall('meta'):
-                tmpMeta = metaObj.Meta()
+                tmpMeta = Meta()
                 paramName = meta.attrib.get('name')
                 tmpMeta.setName(paramName)
                 paramContent = meta.attrib.get('content')
@@ -121,7 +121,7 @@ class XmlParser:
 
             #parsing tag keyframe
             keyframe = root.findall('keyframe')[0]
-            tmpKeyframe = keyframeObj.Keyframe()
+            tmpKeyframe = Keyframe()
             time = keyframe.attrib.get('time')
             tmpKeyframe.setTime(time)
             active = keyframe.attrib.get('active')
@@ -135,7 +135,7 @@ class XmlParser:
 
         for node in startNode.findall('layer'):
 
-            tmpLayer = layerObj.Layer()
+            tmpLayer = Layer()
             #parsing degli attributi del layer
             typeAttrib = node.attrib.get('type')
             if typeAttrib:
@@ -214,12 +214,12 @@ class XmlParser:
             self.parsePoint(param, parentLayer)
         elif paramName == "expand":
             self.parseExpand(param, parentLayer)
-        elif paramName == "invert":
+        elif parseAnimatedamName == "invert":
             self.parseInvert(param, parentLayer)
 
 
     def parseZdepth(self, param, parentLayer):
-        tmpParam = paramObj.Param()
+        tmpParam = Param()
 
         name = param.get('name')
         self.printInfo('param',name)
@@ -256,7 +256,7 @@ class XmlParser:
 
     def parseAmount(self, param, parentLayer):
         #pdb.set_trace()
-        tmpParam = paramObj.Param()
+        tmpParam = Param()
         #<param name="amount">
             #  <real value="0.0000000000"/>
         #</param>
@@ -291,7 +291,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
 
     def parseBlendMethod(self, param, parentLayer):
-        tmpParam = paramBlendMethodObj.ParamBlendMethod()
+        tmpParam = ParamBlendMethod()
         #<param name="blend_method">
             #<integer value="0" static="true"/>
             #</param>
@@ -314,7 +314,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
 
     def parseOrigin(self, param, parentLayer):
-        tmpParam = paramOriginObj.ParamOrigin()
+        tmpParam = ParamOrigin()
         name = param.get('name')
         self.printInfo('name',name)
         tmpParam.setName(name)
@@ -345,7 +345,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
 
     def parseColor(self, param, parentLayer):
-        tmpParam = paramColorObj.ParamColor()
+        tmpParam = ParamColor()
         name = param.get('name')
         self.printInfo('name',name)
         tmpParam.setName(name)
@@ -367,14 +367,14 @@ class XmlParser:
             g = color.find('g').text
             b = color.find('b').text
             a = color.find('a').text
-            tmpColor = colorObj.Color(r, g, b, a)
+            tmpColor = Color(r, g, b, a)
             tmpParam.setColor(tmpColor)
 
         #aggiungo il param all'hash dei param del layer
         parentLayer.addParam(tmpParam)
 
     def parsePoint(self, param, parentLayer):
-        tmpParam = paramPointObj.ParamPoint()
+        tmpParam = ParamPoint()
         name = param.get('name')
         self.printInfo('name',name)
         tmpParam.setName(name)
@@ -392,7 +392,7 @@ class XmlParser:
         if vector is not None:
             x = vector.find('x').text
             y = vector.find('y').text
-            tmpParam.setPoint(pointObj.Point(vectorObj.Vector(x, y)))
+            tmpParam.setPoint(Point(Vector(x, y)))
             self.printInfo('x',x)
             self.printInfo('y',y)
 
@@ -401,7 +401,7 @@ class XmlParser:
 
     def parseExpand(self, param, parentLayer):
         #pdb.set_trace()
-        tmpParam = paramObj.Param()
+        tmpParam = Param()
 
         name = param.get('name')
         self.printInfo('name',name)
@@ -424,7 +424,7 @@ class XmlParser:
 
     def parseInvert(self, param, parentLayer):
         #pdb.set_trace()
-        tmpParam = paramObj.Param()
+        tmpParam = Param()
 
         name = param.get('name')
         self.printInfo('name',name)
@@ -447,7 +447,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
 
     def parseTransformation(self, param, parentLayer):  
-        tmpParam = paramTransformationObj.ParamTransformation()
+        tmpParam = ParamTransformation()
         
         name = param.get('name')
         self.printInfo('name',name)
@@ -461,7 +461,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
            
     def parseComposite(self, composite, parentLayer):
-        tmpComposite = compositeObj.Composite()
+        tmpComposite = Composite()
         #param type
         paramType = composite.get('type')
         tmpComposite.setType(paramType)
@@ -488,7 +488,7 @@ class XmlParser:
         return tmpComposite
 
     def parseTimeOffset(self, param, parentLayer):
-        tmpParam = paramObj.Param()
+        tmpParam = Param()
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
@@ -504,7 +504,7 @@ class XmlParser:
 
     def parseCanvas(self, param, parentLayer):
         #pdb.set_trace()
-        tmpParamCanvas = paramCanvasObj.ParamCanvas()
+        tmpParamCanvas = ParamCanvas()
         name = param.get('name')
         tmpParamCanvas.setName(name)
         self.getLayers(param.find('canvas'), tmpParamCanvas.getLayers())
@@ -518,7 +518,7 @@ class XmlParser:
             if layerType == 'import':
                 #print("nome fileeeeee")
                 param = layer.HashParam['filename']
-                tmpParam = paramObj.Param()
+                tmpParam = Param()
                 tmpParam.setName(param.getName())
                 tmpParam.setText(param.getText())
                 #git add print("nom del file: " + tmpParam.getText())
@@ -526,7 +526,7 @@ class XmlParser:
                 break
 
     def parseTimeDilation(self, param, parentLayer):
-        tmpParam = paramObj.Param()
+        tmpParam = Param()
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
@@ -541,7 +541,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
 
     def parseChildrenLock(self, param, parentLayer):
-        tmpParam = childrenLockObj.ParamChildrenLock()
+        tmpParam = ParamChildrenLock()
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
@@ -561,7 +561,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
 
     def parseOffset(self, offset, parentLayer):
-        tmpOffset = offsetObj.Offset()
+        tmpOffset = Offset()
         #tag animated
         animated = offset.find('animated')
         if animated is not None:
@@ -575,7 +575,7 @@ class XmlParser:
         return tmpOffset
 
     def parseAngle(self,angle,parentLayer):
-        tmpAngle = angleObj.Angle()
+        tmpAngle = Angle()
         animated = angle.find('animated')
         if animated is not None:
             """
@@ -604,13 +604,13 @@ class XmlParser:
 
     def parseSkewAngle(self, skew_angle,parentLayer):
         #tag skew_angle
-        tmpSkewAngle = skewangleObj.SkewAngle()
+        tmpSkewAngle = SkewAngle()
         skewAngleValue = skew_angle.find('angle').get('value')
         tmpSkewAngle.setValue(skewAngleValue)
         return tmpSkewAngle
 
     def parseDelay(self, param, parentLayer):
-        tmpParam = paramObj.Param()
+        tmpParam = Param()
 
         name = param.get('name')
         self.printInfo('param',name)
@@ -632,7 +632,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
 
     def parseVolume(self, param, parentLayer):
-        tmpParam = paramObj.Param()
+        tmpParam = Param()
 
         name = param.get('name')
         self.printInfo('param',name)
@@ -654,7 +654,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
     
     def parseScale(self, scale,parentLayer):
-        tmpScale = scaleObj.Scale()
+        tmpScale = Scale()
         #tag vector
         vector = scale.find('vector')
         if vector is not None:
@@ -669,7 +669,7 @@ class XmlParser:
         return tmpScale
     
     def parseAnimated(self, animated):  
-        tmpAnimated = animatedObj.Animated()
+        tmpAnimated = Animated()
         #param type
         paramType = animated.get('type')
         tmpAnimated.setType(paramType)
@@ -683,7 +683,7 @@ class XmlParser:
 
     def parseWaypoint(self, waypoint, parentType):
         #pdb.set_trace()
-        tmpWaypoint = waypointObj.Waypoint()
+        tmpWaypoint = Waypoint()
         #parametri: time, before, after
         time = waypoint.get('time')
         #in z_depth inserisce time=-0s sostituisco con time=0s
@@ -718,11 +718,11 @@ class XmlParser:
     def parseVector(self,vector):      
         x = vector.find('x').text
         y = vector.find('y').text
-        tmpVector = vectorObj.Vector(x,y)
+        tmpVector = Vector(x,y)
         return tmpVector
 
     def parseOutlineGrow(self, param, parentLayer):
-        tmpParam = paramObj.Param()
+        tmpParam = Param()
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
@@ -737,7 +737,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
 
     def parseLayerName(self, param, parentLayer):
-        tmpParam = paramObj.Param()
+        tmpParam = Param()
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
@@ -752,7 +752,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
 
     def parseTl(self, param, parentLayer):
-        tmpParam = paramTlObj.ParamTl()
+        tmpParam = ParamTl()
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
@@ -762,13 +762,13 @@ class XmlParser:
         if vector is not None:
             x = vector.find('x').text
             y = vector.find('y').text
-            objVector = vectorObj.Vector(x,y)
+            objVector = Vector(x,y)
             tmpParam.setVector(objVector)
         #aggiungo il param all hash dei param del layer
         parentLayer.addParam(tmpParam)
 
     def parseBr(self, param, parentLayer):
-        tmpParam = paramBrObj.ParamBr()
+        tmpParam = ParamBr()
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
@@ -778,13 +778,13 @@ class XmlParser:
         if vector is not None:
             x = vector.find('x').text
             y = vector.find('y').text
-            objVector = vectorObj.Vector(x,y)
+            objVector = Vector(x,y)
             tmpParam.setVector(objVector)
         #aggiungo il param all hash dei param del layer
         parentLayer.addParam(tmpParam)
 
     def parseC(self, param, parentLayer):
-        tmpParam = paramCObj.ParamC
+        tmpParam = ParamC()
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
@@ -802,7 +802,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
 
     def parseGammaAdjust(self, param, parentLayer):
-        tmpParam = paramObj.Param()
+        tmpParam = Param()
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
@@ -817,7 +817,7 @@ class XmlParser:
         parentLayer.addParam(tmpParam)
 
     def parseFilename(self, param, parentLayer):
-        tmpParam = paramObj.Param()
+        tmpParam = Param()
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
