@@ -194,15 +194,15 @@ class XmlParser:
         elif paramName == "layer_name":
             self.parseLayerName(param, parentLayer)
         elif paramName == "tl":
-            self.parseLayerName(param, parentLayer)
+            self.parseTl(param, parentLayer)
         elif paramName == "br":
-            self.parseLayerName(param, parentLayer)
+            self.parseBr(param, parentLayer)
         elif paramName == "c":
-            self.parseLayerName(param, parentLayer)
+            self.parseC(param, parentLayer)
         elif paramName == "gamma_adjust":
-            self.parseLayerName(param, parentLayer)
+            self.parseGammaAdjust(param, parentLayer)
         elif paramName == "filename":
-            self.parseLayerName(param, parentLayer)
+            self.parseFilename(param, parentLayer)
         elif paramName == "delay":
             self.parseDelay(param, parentLayer)
         elif paramName == "volume":
@@ -502,8 +502,8 @@ class XmlParser:
         time = param.find('time')
         #prendo il l'attributo value del tag real
         if time is not None:
-            value = time.get('value')
 	    tmpParam.setNode(time)
+            value = time.get('value')
             tmpParam.setValue(value)
             self.printInfo('value', value)
         #aggiungo il param all hash dei param del layer
@@ -779,7 +779,7 @@ class XmlParser:
         if vector is not None:
             x = vector.find('x').text
             y = vector.find('y').text
-            objVector = Vector(x,y)
+            objVector = Vector(x,y,vector)
             tmpParam.setVector(objVector)
         #aggiungo il param all hash dei param del layer
         parentLayer.addParam(tmpParam)
@@ -795,7 +795,7 @@ class XmlParser:
         if vector is not None:
             x = vector.find('x').text
             y = vector.find('y').text
-            objVector = Vector(x,y)
+            objVector = Vector(x,y,vector)
             tmpParam.setVector(objVector)
         #aggiungo il param all hash dei param del layer
         parentLayer.addParam(tmpParam)
@@ -806,12 +806,12 @@ class XmlParser:
         self.printInfo('param',name)
         tmpParam.setName(name)
         #seleziono il tag bool
-        bool = param.find('bool')
+        integer = param.find('integer')
         #prendo gli attributi value  e static del tag bool
-        if bool is not None:
-            value = bool.get('value')
-            static = bool.get('static')
-            tmpParam.setNode(bool)
+        if integer is not None:
+            value = integer.get('value')
+            static = integer.get('static')
+            tmpParam.setNode(integer)
             tmpParam.setValue(value)
             tmpParam.setStatic(static)
             self.printInfo('value', value)
@@ -840,6 +840,7 @@ class XmlParser:
         name = param.get('name')
         self.printInfo('param',name)
         tmpParam.setName(name)
+	tmpParam.setNode(param)
         #seleziono il tag string
         string = param.find('string')
         #prendo il contenuto di string

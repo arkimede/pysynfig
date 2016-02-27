@@ -5,9 +5,11 @@ class Vector:
 	self.node = None
 
     def __init__(self,x,y,node=None):
-	self.x = x
-	self.y = y
+	#self.x = x
+	#self.y = y
 	self.node = node
+	self.setX(x)
+	self.setY(y)
 
     def setNode(self, node):
 	self.node = node

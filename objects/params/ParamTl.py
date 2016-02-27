@@ -12,3 +12,11 @@ class ParamTl(Param):
 
     def setVector(self, vector):
         self.vector = vector
+
+    def setVectorX(self,x):
+	if self.vector is not None:
+		self.vector.setX(x)
+
+    def setVectorY(self,y):
+	if self.vector is not None:
+        	self.vector.setY(y)
