@@ -12,6 +12,13 @@ class Layer:
         self.treeObj = TreeDict()
         self.zMax = None
         self.filenameParamImportLayer = None
+	self.node = None
+    
+    def setNode(self,node):
+	self.node = node
+
+    def getNode(self):
+	return self.node
 
     def setZmax(self,zMax):
         self.zMax = zMax
@@ -21,31 +28,41 @@ class Layer:
 
     def setType(self,type):
         self.type = type
+	if self.node is not None:
+		self.node.set('type', self.type)
 
     def getType(self):
         return self.type
 
     def setActive(self,active):
         self.active = active
+	if self.node is not None:
+		self.node.set('active', self.active)
     
     def getActive(self):
         return self.active
 
     def setExcludeFromRendering(self,efr):
         self.exclude_from_rendering = efr
+	if self.node is not None:
+		self.node.set('exclude_from_rendering', self.exclude_from_rendering)
 
     def getExcludeFromRendering(self):
         return self.exclude_from_rendering
 
     def setVersion(self, version):
         self.version = version
+	if self.node is not None:
+		self.node.set('version', self.version)
 
     def getVersion(self):
         return self.version
 
     def setDesc(self, desc):
         self.desc = desc
-
+	if self.node is not None:
+		self.node.set('desc', self.desc)
+    
     def getDesc(self):
         return self.desc
 

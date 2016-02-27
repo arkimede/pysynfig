@@ -136,7 +136,8 @@ class XmlParser:
         for node in startNode.findall('layer'):
 
             tmpLayer = Layer()
-            #parsing degli attributi del layer
+	    tmpLayer.setNode(node)
+	    #parsing degli attributi del layer
             typeAttrib = node.attrib.get('type')
             if typeAttrib:
                 tmpLayer.setType(typeAttrib)

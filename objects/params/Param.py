@@ -12,6 +12,10 @@ class Param:
 
     def setNode(self, node):
 	self.node = node
+
+    def getNode(self):
+	return self.node
+
     def setName(self,name):
         self.name = name
 
