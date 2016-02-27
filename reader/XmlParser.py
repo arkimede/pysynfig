@@ -608,6 +608,7 @@ class XmlParser:
             </angle>
             """
 	    angle_ = angle.find('angle')
+	    tmpAngle.setNode(angle_)
             angleValue = angle_.get('value')
             tmpAngle.setValue(angleValue)
         return tmpAngle
@@ -616,6 +617,7 @@ class XmlParser:
         #tag skew_angle
         tmpSkewAngle = SkewAngle()
         angle_ =  skew_angle.find('angle')
+	tmpSkewAngle.setNode(angle_)
 	skewAngleValue = angle_.get('value')
         tmpSkewAngle.setValue(skewAngleValue)
         return tmpSkewAngle

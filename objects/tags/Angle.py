@@ -2,9 +2,18 @@ class Angle:
     def __init__(self):
         self.value = None
         self.animated = None
+    	self.node = None
+
+    def setNode(self, node):
+	self.node = node
+
+    def getNode(self):
+	return self.node
 
     def setValue(self, value):
         self.value = value
+	if self.node is not None:
+		self.node.set('value', value)
 
     def getValue(self):
         return self.value

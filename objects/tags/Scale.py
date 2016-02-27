@@ -15,6 +15,12 @@ class Scale:
     def getAnimated(self):
         return self.animated
 
+    def setVectorX(self,x):
+	self.vector.setX(x)
+
+    def setVectorY(self,y):
+	self.vector.setY(y)
+
     def printXML(self):
         if self.animated is not None:
             xml = """\n""" + "<scale>" + self.animated.printXML() + "</scale>\n" 
