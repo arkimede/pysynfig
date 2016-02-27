@@ -214,7 +214,7 @@ class XmlParser:
             self.parsePoint(param, parentLayer)
         elif paramName == "expand":
             self.parseExpand(param, parentLayer)
-        elif parseAnimatedamName == "invert":
+        elif paramName == "invert":
             self.parseInvert(param, parentLayer)
 
 
