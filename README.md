@@ -170,6 +170,6 @@ scale.setVectorY("0.0000000000")
 
 #--------------STEP 4-----------------
 #write the .sif 
-parser.tree.write("prova.xml")
+parser.tree.write("example.sif)
 ```
 
