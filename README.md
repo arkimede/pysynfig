@@ -123,24 +123,35 @@ For example, suppose you have a .sif in which you have layer (named empty) like 
 
 ...
 ```
+The code below show the functions you should use to complete the above tasks.
+At this moment there is not a doc for the api, and it won't exist until the 
+interface module will be completed. In general, the steps are:
+-STEP 1 parsing
+-STEP 2 selection of a layer
+-STEP 3 modification of the tags
+  - you can get the param/tag with layer_object.getParam("param_or_tag_of_interest")
+-STEP 4 writing
+
+When the interface module will be finisched these opeations will be more easy (i hope ^__^)
 ```
 #importing the class for parsing
 from pysynfig.reader import XmlParser
-
+#--------------STEP 1-----------------
 #parse the file example.sif
 parser = XmlParser("example.sif")
 parser.parse()
 parser.getLayers(parser.tree, parser.listLayer)
 
+#--------------STEP 2-----------------
 #get the list of the layers
 #this a list of Layer objects 
 #(Layer is a class in the objects/tags dir) 
 list = p.getListLayers()
-
 #select the layer of interest
 #for example the first in the list (index 0)
 zero = list[0]
 
+#--------------STEP 3-----------------
 #modify z_depth
 z = zero.getParam("z_depth")
 z.setValue("1.0000000000")
@@ -149,8 +160,6 @@ z.setValue("1.0000000000")
 amount = zero.getParam("amount")
 amount.setValue("1.0000000000")
 
-#modify angle
-
 #modify scale
 transformation = zero.getParam("transformation")
 composite = transformation.getComposite()
@@ -158,6 +167,7 @@ scale = composite.getScale()
 scale.setVectorX("0.0000000000")
 scale.setVectorY("0.0000000000")
 
+#--------------STEP 4-----------------
 #write the .sif 
 parser.tree.write("prova.xml")
 ```
