@@ -6,9 +6,9 @@ You can find informations about how to create plugin for synfig [here](http://wi
 
 So plugins let you to modify (at run time) from python script the sif file.
 To modify the sif file you must:
-1. __to parse__ sif file
-2. __to modify__ the tags of your interest in memory
-3. __to write__ the sif file on the disk
+1. to parse sif file
+2. to modify the tags of your interest in memory
+3. to write the sif file on the disk
 
 This operations, especially the parsing process, could be tedious and sure distract you from the resolution of the problem.
 
