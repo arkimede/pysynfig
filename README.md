@@ -81,7 +81,7 @@ For example, suppose you have a .sif in which you have layer (named empty) like 
   - change x from 0.6170362830 to 1
   - change y from 0.6170362830 to 1
 
-```
+```xml
  <layer type="switch" active="true" exclude_from_rendering="false" version="0.0" desc="empty.jpg">
     <param name="z_depth">
       <real value="0.0000000000"/>
@@ -133,7 +133,7 @@ interface module will be completed. In general, the steps are:
 -STEP 4 writing
 
 When the interface module will be finisched these opeations will be more easy (i hope ^__^)
-```
+```python
 #importing the class for parsing
 from pysynfig.reader import XmlParser
 #--------------STEP 1-----------------
