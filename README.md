@@ -2,7 +2,7 @@
 
 ###Introduction
 pysynfig is a python package, a collection of modules, that could help you to create your own plugin for Synfig Studio.
-You can find informations about how to create plugin for synfig [here](http://wiki.synfig.org/Doc:Plugins).
+You can find informations about how to create a plugin for synfig [here](http://wiki.synfig.org/Doc:Plugins).
 
 So plugins let you to modify (at run time) from python script the .sif file.
 To modify the sif file you must:
