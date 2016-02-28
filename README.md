@@ -7,22 +7,22 @@ You can find informations about how to create a plugin for synfig [here](http://
 So plugins let you to modify (at run time) from python script the .sif file.
 To modify the sif file you must:
 
-- parse .sif
-- modify the tags of your interest in memory
-- write the .sif on the disk
+- **parse** .sif
+- **modify** the tags of your interest in memory
+- **write** the .sif on the disk
 
 This operations, especially the parsing process, could be tedious and sure distract you from the resolution of the problem.
 
-pysynf offers you a simple api to parse the sif and to select/modify the tags of your interest, and finally write them on the disk. So you can spend your time to write the logic of the plugin without worrying about the process of parsing/modifying/writing.
+pysynfig offers you a simple api to parse the sif and to select/modify the tags of your interest, and finally write them on the disk. So you can spend your time to write the logic of the plugin without worrying about the process of parsing/modifying/writing.
 It sounds as a good thing ;)
 
 ###Structure
 pysynfig is a collection of module, the modules are located into these dirs:
-- objects: here are located all the classes that represent the tags in the .sif
-  - params: here are located all the classes for only the param tags in the sif
-  - tags: here are located all the classes for all the restant tags in the sif that are not a param tag
-- reader: here are located the classes to parse the .sif
-- interface: here are located the classes that the the user (you) should use for parsing/modifying/writing the sif
+- **objects**: here are located all the classes that represent the tags in the .sif
+  - **params**: here are located all the classes for only the param tags in the sif
+  - **tags**: here are located all the classes for all the restant tags in the sif that are not a param tag
+- **reader**: here are located the classes to parse the .sif
+- **interface**: here are located the classes that the the user (you) should use for parsing/modifying/writing the sif
 
 You can use the tree list below as a reference for the implemented tag in pysynf.
 If the tag you want to modify is present in the list, you can use pysynf's api for that.
@@ -74,10 +74,10 @@ pysynfig/
 
 ###How to use
 At this moment the interface module is not yet implemented, so you must use the api of the sublevels (located in the objects/reader dirs). 
-For example, suppose you have a .sif in which you have layer (named empty) like in the text below, and you want:
-- 1. change **z_depth** from 0 to 1 (**raise up** the layer)
-- 2. change **amount** from 0 to 1 (**show** the layer, amout==opacity)
-- 3. change **scale** (**elimate the scaling**)
+For example, suppose you have a .sif in which you have a layer (named empty) like in the text below, and you want:
+- change **z_depth** from 0 to 1 (**raise up** the layer)
+-  change **amount** from 0 to 1 (**show** the layer, amout==opacity)
+-  change **scale** (**elimate the scaling**)
   - change x from 0.6170362830 to 1
   - change y from 0.6170362830 to 1
 
