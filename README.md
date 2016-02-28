@@ -126,11 +126,12 @@ For example, suppose you have a .sif in which you have a layer (named empty) lik
 The code below show the functions you should use to complete the above tasks.
 At this moment there is not a doc for the api, and it won't exist until the 
 interface module will be completed. In general, the steps are:
--STEP 1 parsing
--STEP 2 selection of a layer
--STEP 3 modification of the tags
+
+- **STEP 1** parsing
+- **STEP 2** selection of a layer
+- **STEP 3** modification of the tags
   - you can get the param/tag with layer_object.getParam("param_or_tag_of_interest")
--STEP 4 writing
+- **STEP 4** writing
 
 When the interface module will be finisched these opeations will be more easy (i hope ^__^)
 ```python
