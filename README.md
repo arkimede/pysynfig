@@ -165,8 +165,8 @@ amount.setValue("1.0000000000")
 transformation = zero.getParam("transformation")
 composite = transformation.getComposite()
 scale = composite.getScale()
-scale.setVectorX("0.0000000000")
-scale.setVectorY("0.0000000000")
+scale.setVectorX("1.0000000000")
+scale.setVectorY("1.0000000000")
 
 #--------------STEP 4-----------------
 #write the .sif 
