@@ -24,8 +24,8 @@ pysynfig is a collection of module, the modules are located into these dirs:
 - **reader**: here are located the classes to parse the .sif
 - **interface**: here are located the classes that the the user (you) should use for parsing/modifying/writing the sif
 
-You can use the tree list below as a reference for the implemented tag in pysynf.
-If the tag you want to modify is present in the list, you can use pysynf's api for that.
+You can use the tree list below as a reference for the implemented tag in pysynfig.
+If the tag you want to modify is present in the list, you can use pysynfig's api for that.
 This list grows up quickly, don't worry ;)
 ```
 [kinder@localhost dev]$ tree pysynfig/
@@ -133,7 +133,7 @@ interface module will be completed. In general, the steps are:
   - you can get the param/tag with layer_object.getParam("param_or_tag_of_interest")
 - **STEP 4** writing
 
-When the interface module will be finisched these opeations will be more easy (i hope ^__^)
+When the interface module will be finished these opeations will be easier (i hope ^__^)
 ```python
 #importing the class for parsing
 from pysynfig.reader import XmlParser
