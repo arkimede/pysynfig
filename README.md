@@ -73,7 +73,16 @@ pysynfig/
 ```
 
 ###How to use
-At this moment the interface module is not yet implemented, so you must use the api of the sublevels (located in the objects/reader dirs). 
+At this moment the interface is in beta state, so you have two options. You can use the api of the sublevels (located in the objects/reader dirs) or try the interface.
+
+#####Interface
+Interface module offer you an easier way to manipulate your sif, it consists in four steps
+- STEP1 instantiate the interface with the name of the sif to parse
+- STEP2 parse the sif
+- STEP3 get the layer of interest, or the main_canvas
+- STEP4 modify tags or attributes
+- STEP5 write the sif
+
 For example, suppose you have a .sif in which you have a layer (named empty) like in the text below, and you want:
 - change **z_depth** from 0 to 1 (**raise up** the layer)
 -  change **amount** from 0 to 1 (**show** the layer, amout==opacity)
@@ -123,17 +132,50 @@ For example, suppose you have a .sif in which you have a layer (named empty) lik
 
 ...
 ```
-The code below show the functions you should use to complete the above tasks.
+The code below show the functions of the interface module you should use to complete the above tasks.
 At this moment there is not a doc for the api, and it won't exist until the 
-interface module will be completed. In general, the steps are:
+interface module will be completed. 
 
+```python
+from pysynfig.interface import Interface
+
+arkimede = Interface("example.sif")
+
+#read
+arkimede.read()
+
+#get the first layer (index 0)
+zero = arkimede.layer(0)
+
+#modify z_depth
+z = layer.getParam("z_depth")
+z.setValue("1.0000000000")
+
+#modify amount
+amount = zero.getParam("amount")
+amount.setValue("1.0000000000")
+
+#modify scale
+transformation = zero.getParam("transformation")
+composite = transformation.getComposite()
+scale = composite.getScale()
+scale.setVectorX("1.0000000000")
+scale.setVectorY("1.0000000000")
+
+#write
+arkimede.write()
+
+```
+
+#####Sublevel api, the hard way :)
+You can make the same thing directly without using interface, the code below show you how to do.
+In general, the steps are:
 - **STEP 1** parsing
 - **STEP 2** selection of a layer
 - **STEP 3** modification of the tags
   - you can get the param/tag with layer_object.getParam("param_or_tag_of_interest")
 - **STEP 4** writing
 
-When the interface module will be finished these opeations will be easier (i hope ^__^)
 ```python
 #importing the class for parsing
 from pysynfig.reader import XmlParser
