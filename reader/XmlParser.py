@@ -129,6 +129,7 @@ class XmlParser:
             tmpCanvas.setKeyframe(tmpKeyframe)
             
             self.mainCanvas = tmpCanvas
+	    return self.mainCanvas
 
     def getLayers(self, startNode, list):
         numLayer = len(startNode.findall('layer'))
