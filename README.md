@@ -148,7 +148,7 @@ arkimede.read()
 zero = arkimede.layer(0)
 
 #modify z_depth
-z = layer.getParam("z_depth")
+z = zero.getParam("z_depth")
 z.setValue("1.0000000000")
 
 #modify amount
