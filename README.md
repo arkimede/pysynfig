@@ -77,11 +77,11 @@ At this moment the interface is in beta state, so you have two options. You can 
 
 #####Interface
 Interface module offer you an easier way to manipulate your sif, it consists in five steps
-- STEP1 instantiate the interface with the name of the sif to parse
-- STEP2 parse the sif
-- STEP3 get the layer of interest, or the main_canvas
-- STEP4 modify tags or attributes
-- STEP5 write the sif
+- **STEP1** instantiate the interface with the name of the sif to parse
+- **STEP2** parse the sif
+- **STEP3** get the layer of interest, or the main_canvas
+- **STEP4** modify tags or attributes
+- **STEP5** write the sif
 
 For example, suppose you have a .sif in which you have a layer (named empty) like in the text below, and you want:
 - change **z_depth** from 0 to 1 (**raise up** the layer)
@@ -138,15 +138,19 @@ interface module will be completed.
 
 ```python
 from pysynfig.interface import Interface
-
+#--------------STEP 1----------------
+#create interface object
 arkimede = Interface("example.sif")
 
+#--------------STEP 2----------------
 #read
 arkimede.read()
 
+#--------------STEP 3----------------
 #get the first layer (index 0)
 zero = arkimede.layer(0)
 
+#--------------STEP 4----------------
 #modify z_depth
 z = zero.getParam("z_depth")
 z.setValue("1.0000000000")
@@ -162,6 +166,7 @@ scale = composite.getScale()
 scale.setVectorX("1.0000000000")
 scale.setVectorY("1.0000000000")
 
+#--------------STEP 5----------------
 #write
 arkimede.write()
 
