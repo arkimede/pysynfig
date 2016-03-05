@@ -76,7 +76,7 @@ pysynfig/
 At this moment the interface is in beta state, so you have two options. You can use the api of the sublevels (located in the objects/reader dirs) or try the interface.
 
 #####Interface
-Interface module offer you an easier way to manipulate your sif, it consists in four steps
+Interface module offer you an easier way to manipulate your sif, it consists in five steps
 - STEP1 instantiate the interface with the name of the sif to parse
 - STEP2 parse the sif
 - STEP3 get the layer of interest, or the main_canvas
