@@ -1,6 +1,6 @@
 # pysynfig
 
-###Introduction
+### Introduction
 pysynfig is a python package, a collection of modules, that could help you to create your own plugin for Synfig Studio.
 You can find informations about how to create a plugin for synfig [here](http://wiki.synfig.org/Doc:Plugins).
 
@@ -16,7 +16,7 @@ This operations, especially the parsing process, could be tedious and sure distr
 pysynfig offers you a simple api to parse the sif and to select/modify the tags of your interest, and finally write them on the disk. So you can spend your time to write the logic of the plugin without worrying about the process of parsing/modifying/writing.
 It sounds as a good thing ;)
 
-###Structure
+### Structure
 pysynfig is a collection of module, the modules are located into these dirs:
 - **objects**: here are located all the classes that represent the tags in the .sif
   - **params**: here are located all the classes for only the param tags in the sif
@@ -72,7 +72,7 @@ pysynfig/
 
 ```
 
-###How to use
+### How to use
 At this moment the interface is in beta state, so you have two options. You can use the api of the sublevels (located in the objects/reader dirs) or try the interface.
 
 #####Interface
@@ -172,7 +172,7 @@ arkimede.write()
 
 ```
 
-#####Sublevel api, the hard way :)
+##### Sublevel api, the hard way :)
 You can make the same thing directly without using interface, the code below show you how to do.
 In general, the steps are:
 - **STEP 1** parsing
